@@ -1,0 +1,23 @@
+1,react-native init project
+2,npm install
+3,配置packege.json
+"postinstall": "rn-nodeify --install --hack",
+4,npm install web3 --save
+5,
+npm i --save crypto
+npm i --save react-native-crypto
+# install peer deps 
+npm i --save react-native-randombytes
+react-native link react-native-randombytes
+
+6,npm run postinstall
+
+异常一：es2015 
+  方法：window 环境下：进入node_modules  执行 del /s *.babelrc
+异常二：btoa
+  方法:找到 react-native-provider-ws  nodejs  增加var btoa= require('btoa')：
+  npm install --save btoa
+异常三：react-native-crypto  new brorand.Rand()
+  方法：app.js入口文件添加 
+      import "./shim";
+      import crypto from "crypto";
